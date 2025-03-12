@@ -1,0 +1,46 @@
+name: Run GeoNews Main Script
+
+on:
+  schedule:
+    # 8:00 AM IST (3 times)
+    - cron: '30 2 * * *'
+    - cron: '35 2 * * *'
+    - cron: '40 2 * * *'
+    
+    # 11:00 AM IST (3 times)
+    - cron: '30 5 * * *'
+    - cron: '35 5 * * *'
+    - cron: '40 5 * * *'
+    
+    # 2:00 PM IST (3 times)
+    - cron: '30 8 * * *'
+    - cron: '35 8 * * *'
+    - cron: '40 8 * * *'
+    
+    # 5:00 PM IST (3 times)
+    - cron: '30 11 * * *'
+    - cron: '35 11 * * *'
+    - cron: '40 11 * * *'
+  
+  workflow_dispatch: # Allows manual trigger
+
+jobs:
+  run-main:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run World_Main.py
+        run: python MainWorld/World_Main.py
