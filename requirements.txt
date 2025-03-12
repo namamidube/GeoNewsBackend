@@ -1,0 +1,10 @@
+langdetect
+deep-translator
+requests
+certifi
+psycopg2
+spacy
+requests
+opencage
+logging
+googletrans
