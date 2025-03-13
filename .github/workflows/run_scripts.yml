@@ -41,6 +41,10 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+          if [ ! -d "$(python -m site --user-base)/lib/python*/site-packages/en_core_web_lg" ]; then
+            python -m spacy download en_core_web_lg
+          fi
 
       - name: Run World_Main.py
         run: python MainWorld/World_Main.py
+        
